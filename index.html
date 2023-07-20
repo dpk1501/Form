@@ -1,0 +1,458 @@
+<html>
+    <head>
+        <title>Log In</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="javascript/jquery-3.7.0.min.js"></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="images/favicon-32x32.png">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geologica&family=Montserrat:wght@100&family=Neucha&family=Pangolin&family=Poppins:wght@100&family=Roboto:wght@400;700&family=Shantell+Sans:ital,wght@0,300;1,300&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+
+        <script>
+            var email_val = "";
+            var regexSimpleEmail = /@/;
+
+            $(document).ready(function(){
+                $('.clickon').click(function(){
+
+                email_val = $("input").val();
+                if (validateEmail(email_val,regexSimpleEmail)){
+                    $('.form').css('display', 'none');
+                    $(".form1").css("display", "flex"); 
+                    $(".form1").css("animation-play-state", "running"); 
+                }
+                else{
+                    $("#result").removeClass("isemail").show().html(`Valid email required`);
+                    $("input").css("border-color", "#E91E63");
+                    $("input").css("background", "rgba(253, 124, 168, 0.51)");
+                }
+            });
+        });
+
+                    function validateEmail(email_val,emailRegex){
+                    if (emailRegex.test(email_val)){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+
+                $("#clear").on("click",function(){
+                    $("#result").hide().html('')
+                    $("#inputemail").val("");
+                });
+
+        </script>
+        <style>
+
+            body, html {
+                overflow: hidden;
+                font-family: 'Roboto', sans-serif;
+                background-color: #36384d;
+
+                font-size: 2em;
+            }
+
+            .screen {
+                position: relative;
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+            }
+
+            .form {
+                aspect-ratio: 1 / 1;
+                position: relative;
+                margin: 0 auto;
+                border: none;
+                width: 45%;
+                height: 60%;
+
+                border-radius: 32px;
+                background: #FEFEFE;
+
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+            }
+
+            #result {
+                position: relative;
+                font-size: 0.95vw;
+                font-weight: 400;
+                color: red;
+                margin: 1vh 0 0 11vw;
+            }
+
+            input {
+                padding: 1vw;
+            }
+
+            .stay_updated {
+                position: relative;
+                font-size: 3vw;
+                font-weight: 700;
+                color: #242843;
+
+                margin: 7vh 0 0 0;
+            }
+
+            .join {
+                position: relative;
+                font-size: 0.95vw;
+                font-weight: 400;
+                color: #242843;
+
+                margin: 3vh 0 0 0;
+            }
+            
+            ul {
+                margin: 2vh 0 0 -3vw;
+            }
+            li {
+                list-style: none;
+                content: '';
+                margin: 0 0 0 0;
+	            padding: 1vh 0 1vh 3vw;
+                background-repeat: no-repeat;
+	            background-position: left center;
+	            background-size: 3%;
+                background-image: url("images/icon-list.svg");
+            }
+
+            .container_image {
+                position: absolute;
+
+                top: 1.5vh;
+                right: 0vw;
+                width: 50%;
+                height: 95%;
+            }
+
+            .image {
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+
+                background-image: url("images/illustration-sign-up-desktop.svg");
+            }
+
+            .email_text {
+                font-size: 0.95vw;
+                font-weight: 700;
+                color: #242843;
+                margin: 3vh 0 0 0;
+            }
+
+            input {
+                margin: 1vh 0 0 0;
+                width: 20vw;
+                height: 7vh;
+                border-radius: 10px;
+                border-width: 1px;
+            }
+
+            input::placeholder {
+                font-size: 1vw;
+                position: absolute;
+                left: 5%;
+            }
+
+            .clickon {
+                margin: 1vh 0 0 0;
+                width: 20vw;
+                height: 7vh;
+                border-radius: 10px;
+                border: none;
+                background: #242843;
+                cursor: pointer;
+            }
+
+            .clickon:hover {
+                background: linear-gradient(265deg, #FF673D 0%, #FF5379 100%);
+                box-shadow: 0px 4px 13px 11px rgba(255, 83, 120, 0.20);
+            }
+
+            .clickon > h2 {
+                font-size: 0.95vw;
+                font-weight: 700;
+                color: white;
+            }
+
+
+            /* success */
+
+            .form1 {
+                aspect-ratio: 1 / 1.5;
+                position: relative;
+                display: none;
+                margin: 0 auto;
+                align-items: center;
+                flex-direction: column;
+                border: none;
+                width: 20vw;
+                height: 55vh;
+                border-radius: 32px;
+                background: #FEFEFE;
+
+                animation: appear 0.5s ease;
+                animation-play-state: paused;
+
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            }
+
+            @keyframes appear {
+                0% {
+                    margin-bottom: -10vh; 
+                    opacity: 0; 
+                }
+
+                100% {
+                    opacity: 1; 
+                };
+            }
+
+
+
+            .form1 div {
+                align-items: center;
+            }
+            .form1 h1 {
+                align-items: center;
+            }
+            .form1 h2 {
+                align-items: center;
+            }
+
+            .image1 {
+                position: relative;
+                width: 3.5vw;
+                height: auto;
+                margin: 5vh 0 0 0;
+            }
+            .thanks {
+                display: flex;
+                position: relative;
+                font-size: 3vw;
+                font-weight: 700;
+                color: #242843;
+                margin: 5vh 0 0 0;
+            }
+
+            .info {
+                position: relative;
+                font-size: 0.95vw;
+                font-weight: 400;
+                color: #242843;
+                margin: 3vh 0 4vh 0;
+
+            }
+
+            .click1 {
+                width: 22vw;
+                height: 7vh;
+                border-radius: 10px;
+                border: none;
+                background: #242843;
+                cursor: pointer;
+            }
+
+            .click1:hover {
+                background: linear-gradient(265deg, #FF673D 0%, #FF5379 100%);
+                box-shadow: 0px 4px 13px 11px rgba(255, 83, 120, 0.20);
+            }
+
+            .click1 > h2 {
+                font-size: 0.95vw;
+                font-weight: 700;
+                color: white;
+            }
+
+            br {
+                display: none;
+            }
+
+            .br {
+                display: block;
+            }
+
+            /* MOBILE */
+            @media only screen and (max-width: 375px) {
+            body, html {
+                width: 100%;
+                background: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .form {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                box-shadow: none;
+                position: relative;
+            }
+
+            .container_image {
+                position: relative;
+                width: 88%;
+                height: 75%;
+                margin-top: -10vh;
+                margin-left: -11vw;
+                margin-bottom: 2vh;
+            }
+
+            .image {
+                border-radius: 15px;
+                background-size: cover;
+                width: 50%;
+                height: 90%;
+            }
+
+            .stay_updated {
+                margin: 0 0 0 0;
+                font-size: 10vw;
+            }
+
+            .join {
+                font-size: 4.5vw;
+            }
+            
+            ul {
+                margin: 2vh 0 0 -10vw;
+            }
+
+            li {
+                margin: 0 0 0 0;
+	            padding: 2vh 0 0 10vw;
+            }
+            
+            .email_text {
+                font-size: 3vw;
+                margin: 4vh 0 0 0;
+            }
+
+            input::placeholder {
+                font-size: 3vw;
+                left: 5vw;
+            }
+            input {
+                padding: 5vw;
+                width: 80vw;
+                margin: 1vh 0 0 0;
+            }
+
+            .clickon {
+                width: 80vw;
+                margin: 2vh 0 0 0;
+            }
+
+            .clickon > h2 {
+                font-size: 3vw;
+            }
+            
+            br {
+                display: block;
+            }
+
+            .br {
+                display: none;
+            }
+
+            #result {
+                font-size: 3vw;
+                margin: 0 9vw 0 0;
+            }
+            
+            .form1 {
+                box-shadow: none;
+            }
+
+            /* sucsess */
+            .image1 {
+                width: 20vw;
+                margin-left: -60vw;
+
+            }
+
+            .thanks {
+                font-size: 10vw;
+            }
+
+            .info {
+                font-size: 4.5vw;
+            }
+
+            .click1 {
+                width: 80vw;
+                margin: 2vh 0 0 0;
+            }
+
+            .click1 > h2 {
+                font-size: 3vw;
+            }
+            }
+        </style>
+        
+    </head>
+    <body>
+
+        <section class="screen">
+
+
+            <fieldset class="form">
+
+                <div class="container_image">
+                    <div class="image"></div>
+                 </div>
+                
+                <h1 class="stay_updated">Stay updated!</h1>
+
+                <h2 class="join">Join 60,000+ product managers receiving <br>monthly <br class="br"> updates on:
+                    <ul>
+                        <li>Product discovery and building what <br/>matters</li>
+                        <li>Measuring to ensure updates are a <br/>uccess</li>
+                        <li>And much more!</li>
+                    </ul>
+                </h2>
+
+                <div class="fill_out">
+                    <h2 class="email_text">Email address</h2>
+                    <div>
+                        <p id="result" hidden="true">
+                        </p>
+                    </div>
+                    <input type="text" name="email" placeholder="email@company.com"></input>
+                    <div class="the_form"></div>
+
+                    <button class="clickon">
+                        <h2>Subscribe to monthly newsletter</h2>
+                    </button>
+                   
+                </div>
+                
+            </fieldset>
+
+            <fieldset class="form1">
+                <image class="image1" src="images/icon-success.svg" alt="image">
+                <h1 class="thanks">Thanks for subscribing!</h1>
+
+                <h2 class="info">A confirmation email has been sent to <br> <b>ash@loremcompany.com</b>. Please open it and click <br class="br">the button inside to confirm your subscription.</h2>
+
+                <button class="click1">
+                    <h2>Dismiss message</h2>
+                </button>
+            </fieldset>
+
+        </section>
+    </body>
+</html>
